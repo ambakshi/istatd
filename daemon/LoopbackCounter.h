@@ -7,7 +7,7 @@
 #include <boost/asio/deadline_timer.hpp>
 
 /*
- * Use istatd to monitor itself. All declared counters will be put in a 
+ * Use istatd to monitor itself. All declared counters will be put in a
  * "istatd" root level group.
  *
  * usage:
@@ -17,8 +17,8 @@
  * gSomeEvent++;    //  or
  * ++gSomeEvent;    //  or
  * gSomeEvent.value(); // or
- * 
- * This will create a coalesced counter that gets recorded through the 
+ *
+ * This will create a coalesced counter that gets recorded through the
  * normal "coalesce" path.
  *
  * LoopbackCounter gSomeGauge("some.gauge", TypeGauge);
@@ -68,7 +68,7 @@ public:
     static void setup(IStatStore *ss, boost::asio::io_service &svc);
     static void forceUpdates();
 private:
-    friend class LoopbackCounterRecord;
+    friend struct LoopbackCounterRecord;
     LoopbackCounterRecord *me_;
     static IStatStore *ss_;
     static boost::asio::io_service *svc_;

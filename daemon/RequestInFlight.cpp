@@ -593,7 +593,7 @@ void RequestInFlight::createCountersMatchingResponse(std::string const &pattern,
         {
             comma = true;
         }
-        strm_buffer_ << 
+        strm_buffer_ <<
             "{\"is_leaf\":" << ((*ptr).second.isLeaf ? "true" : "false") <<
             ",\"type\":" << ((*ptr).second.counterType ) <<
             ",\"name\":\"" << js_quote((*ptr).first) << "\"}";

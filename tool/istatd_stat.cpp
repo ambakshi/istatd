@@ -71,7 +71,7 @@ int main(int argc, char const *argv[])
     }
     while (q < 6)
     {
-        int r = ::send(s, "stats\n" + q, 6 - q, 0);
+        int r = ::send(s, &"stats\n"[q], 6 - q, 0);
         if (r < 0)
         {
             perror("send()");

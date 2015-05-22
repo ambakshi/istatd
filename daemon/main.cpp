@@ -298,6 +298,8 @@ private:
 
     void auditFunc(boost::system::system_error const &err)
     {
+        (void)svc_;
+        (void)ss_;
         if (debugAudit.enabled())
         {
             LogDebug << "AuditTimer::auditFunc() thread" << boost::this_thread::get_id();
@@ -352,6 +354,7 @@ private:
     int interval_;
     void timerFunc(boost::system::system_error const &err)
     {
+        (void)svc_;
         if (debugAudit.enabled())
         {
             LogDebug << "LogRolloverTimer::threadFunc() thread" << boost::this_thread::get_id();
@@ -466,7 +469,7 @@ void drop_privileges()
 {
     LogSpam << "drop_privileges()";
     uid_t uid = dropped_uid();
-    if (uid < 0)
+    if (uid == -1)
     {
         throw std::runtime_error("User " + user.get() + " is not known.");
     }

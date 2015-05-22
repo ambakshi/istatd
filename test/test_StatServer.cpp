@@ -44,7 +44,7 @@ boost::shared_ptr<StatServer> makeServer(Mmap *mm, boost::asio::io_service &svc)
 boost::shared_ptr<StatServer> makeServerWithBlacklist(Mmap *mm, boost::asio::io_service &svc, int period) {
     int port = 0;
     std::string agent("");
-    std::string blacklist();
+    std::string blacklist("");
     Blacklist::Configuration blacklistCfg = {};
     blacklistCfg.path = std::string("/tmp/test/blacklist/ss_blacklist.set");
     blacklistCfg.period = period;
@@ -196,8 +196,8 @@ void test_blacklist() {
     server->getConnected(metaInfo);
 
     std::vector<MetaInfo>::iterator it = std::find_if(
-            metaInfo.begin(), 
-            metaInfo.end(), 
+            metaInfo.begin(),
+            metaInfo.end(),
             std::bind2nd(condition_match(), "hostname1"));
     assert_true(it != metaInfo.end());
 
@@ -224,8 +224,8 @@ void test_blacklist() {
     server->getConnected(metaInfoG);
 
     it = std::find_if(
-            metaInfoG.begin(), 
-            metaInfoG.end(), 
+            metaInfoG.begin(),
+            metaInfoG.end(),
             std::bind2nd(condition_match(), "hostname7"));
     assert_true(it != metaInfoG.end());
 

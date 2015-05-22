@@ -20,6 +20,7 @@ Blacklist::Blacklist(boost::asio::io_service &svc, Configuration &cfg) :
     lastModifiedTime_(0),
     period_(cfg.period)
 {
+    (void)svc_;
     LogSpam << "Blacklist::Blacklist being created ( " << cfg.path << " )";
     load();
     startRead();
